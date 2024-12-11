@@ -295,9 +295,9 @@ function Get-OSMedia {
         #=================================================
         #   Revision
         #=================================================
-        $OSMedia | Sort-Object OSMFamily, MediaType, ModifiedTime, UBR -Descending | Group-Object OSMFamily | ForEach-Object {$_.Group | Select-Object -First 1} | foreach {$_.Revision = 'OK'}
-        $OSMedia | Where-Object {$_.Revision -eq 'OK'} | foreach {$_.Superseded = $false}
-        $OSMedia | Where-Object {$_.Updates -eq 'Update'} | foreach {$_.NeedsUpdate = $true}
+        $OSMedia | Sort-Object OSMFamily, MediaType, ModifiedTime, UBR -Descending | Group-Object OSMFamily | ForEach-Object {$_.Group | Select-Object -First 1} | ForEach-Object {$_.Revision = 'OK'}
+        $OSMedia | Where-Object {$_.Revision -eq 'OK'} | ForEach-Object {$_.Superseded = $false}
+        $OSMedia | Where-Object {$_.Updates -eq 'Update'} | ForEach-Object {$_.NeedsUpdate = $true}
         #=================================================
         #   Filters
         #=================================================
